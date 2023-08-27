@@ -21,7 +21,14 @@ export default function Home() {
           {!!user.isSignedIn && <SignOutButton />}
         </div>
         <div>
-          {data?.map((post) => (<div key={post.id}>{post.content}</div>))}
+          {data?.map((post: {
+            id: string;
+            createdAt: Date;
+            content: string;
+            authorId: string;
+          }) => {
+            return (<div key={post.id}>{post.content}</div>);
+          })}
         </div>
       </main>
     </>
